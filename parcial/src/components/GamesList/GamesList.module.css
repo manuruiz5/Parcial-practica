@@ -32,3 +32,61 @@
 .deleteButton:hover {
   background-color: #f5f5f5;
 }
+
+/* Media queries para pantallas pequeñas (móviles) */
+@media only screen and (max-width: 600px) {
+  .gamesListContainer {
+    padding: 10px;
+    max-width: 100%; /* Ocupa todo el ancho disponible */
+  }
+
+  .gameItem {
+    flex-direction: column; /* Cambia a disposición vertical */
+    align-items: flex-start; /* Alinea los elementos a la izquierda */
+  }
+
+  .gameTitle {
+    font-size: 18px; /* Reduce el tamaño del título */
+    margin-bottom: 10px; /* Espacio entre el título y el botón */
+  }
+
+  .detailsButton {
+    width: 100%; /* El botón ocupa todo el ancho en móviles */
+    text-align: center;
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+/* Media queries para tablets */
+@media only screen and (max-width: 768px) {
+  .gamesListContainer {
+    padding: 15px;
+    max-width: 90%; /* Ajusta el ancho en tablets */
+  }
+
+  .gameTitle {
+    font-size: 22px; /* Ajusta el tamaño del título */
+  }
+
+  .detailsButton {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
+/* Para pantallas grandes (escritorios) */
+@media only screen and (min-width: 769px) {
+  .gamesListContainer {
+    max-width: 1000px;
+  }
+
+  .gameTitle {
+    font-size: 24px;
+  }
+
+  .detailsButton {
+    font-size: 18px;
+    padding: 12px 24px;
+  }
+}

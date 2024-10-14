@@ -34,3 +34,43 @@
   margin-bottom: 10px; /* Ajusta el espacio entre los párrafos solo en GameDetails */
 }
 
+
+/* Estilo responsivo para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  .gameDetailsContainer {
+    max-width: 100%; /* Ocupa todo el ancho del móvil */
+    padding: 10px; /* Reduce el padding para pantallas pequeñas */
+  }
+
+  h2 {
+    font-size: 20px; /* Tamaño más pequeño del título en móviles */
+  }
+
+  .backButton {
+    font-size: 10px;
+    padding: 8px 16px;
+  }
+  p{
+    font-size: 10px;
+  }
+}
+
+/* Para tablets */
+@media only screen and (max-width: 768px) {
+  .gameDetailsContainer {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .backButton {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+  p{
+    font-size: 14px;
+  }
+}
