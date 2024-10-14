@@ -3,12 +3,12 @@ import GamesList from "../GamesList/GamesList"; // Importa el componente GamesLi
 import styles from "./Home.module.css"; // Importa el archivo CSS para aplicar estilos al componente
 
 // Define el componente funcional Home que recibe 'games' como prop
-const Home = ({ games }) => {
+const Home = ({ games, deleteGameById }) => {
   return (
     <div className={styles.homeContainer}> {/* Contenedor principal del componente */}
       <h2>Juegos Olímpicos</h2> {/* Título de la sección */}
       <button className={styles.addButton}>Agregar juego</button> {/* Botón para agregar un nuevo juego */}
-      <GamesList games={games} /> {/* Renderiza el componente GamesList y le pasa 'games' como prop */}
+      <GamesList games={games} deleteGameById={deleteGameById} /> {/* Renderiza el componente GamesList y le pasa 'games' como prop */}
     </div>
   );
 };
@@ -24,6 +24,7 @@ Home.propTypes = {
       categories: PropTypes.string, // 'categories' es una cadena, no es requerido
     })
   ).isRequired, // 'games' es un array de objetos y es requerido
+  deleteGameById: PropTypes.func.isRequired,
 };
 
 export default Home; // Exporta el componente para que pueda ser utilizado en otros lugares

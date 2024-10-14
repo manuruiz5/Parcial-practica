@@ -2,7 +2,7 @@ import styles from "./GamesList.module.css";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
-const GamesList = ({ games }) => {
+const GamesList = ({ games, deleteGameById }) => {
   const navigate = useNavigate();
 
   return (
@@ -12,11 +12,12 @@ const GamesList = ({ games }) => {
           <h3>{game.title}</h3>
           <button
             className={styles.detailsButton}
-            onClick={() => navigate(`/game/${game.id}`)}
-          >
+            onClick={() => navigate(`/game/${game.id}`)}>
             Detalles
           </button>
-          <button className={styles.deleteButton}>Borrar</button>
+          <button className={styles.deleteButton}
+          onClick={() => deleteGameById(game.id)}
+          >Borrar</button>
         </div>
       ))}
     </div>
@@ -33,6 +34,7 @@ GamesList.propTypes = {
       categories: PropTypes.string,
     })
   ).isRequired,
+  deleteGameById: PropTypes.func.isRequired,
 };
 
 export default GamesList;

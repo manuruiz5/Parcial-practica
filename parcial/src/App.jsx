@@ -5,7 +5,9 @@ import GameDetails from "./components/GameDetails/GameDetails";
 
 const App = () => {
   const [games, setGames] = useState([]);
+  const [selectedGame, setSelectedGame] = useState(null);
 
+  // GET all games
   useEffect(() => {
     const fetchGames = async () => {
       try {
@@ -20,11 +22,39 @@ const App = () => {
     fetchGames();
   }, []);
 
+  // GET a game by ID
+  const fetchGameById = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/api/games/${id}`);
+      const data = await response.json();
+      setSelectedGame(data[0]); // Asumimos que data es un array con un único elemento
+    } catch (error) {
+      console.error("Error fetching game by ID:", error);
+    }
+  };
+
+  // DELETE a game by ID
+  const deleteGameById = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/api/games/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        setGames((prevGames) => prevGames.filter((game) => game.id !== id));
+      
+      } else {
+        console.error('Error deleting game');
+      }
+    } catch (error) {
+      console.error("Error deleting game:", error);
+    }
+  };
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home games={games} />} />
-        <Route path="/game/:id" element={<GameDetails games={games} />} />
+        <Route path="/" element={<Home games={games} deleteGameById={deleteGameById} />} />
+        <Route path="/game/:id" element={<GameDetails games={games} fetchGameById={fetchGameById} selectedGame={selectedGame}  />} />
       </Routes>
     </BrowserRouter>
   );
