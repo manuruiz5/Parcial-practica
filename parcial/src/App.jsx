@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import GameDetails from "./components/GameDetails/GameDetails";
+import AddGame from "./components/AddGame/AddGame";
 
 const App = () => {
   const [games, setGames] = useState([]);
@@ -50,11 +51,30 @@ const App = () => {
     }
   };
 
+  // POST a new game
+  const addGame = async (newGame) => {
+    try {
+      const response = await fetch("http://localhost:3000/api/games", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newGame),
+      });
+      const data = await response.json();
+      setGames(data);
+    } catch (error) {
+      console.error("Error adding new game:", error);
+    }
+  };
+
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home games={games} deleteGameById={deleteGameById} />} />
         <Route path="/game/:id" element={<GameDetails games={games} fetchGameById={fetchGameById} selectedGame={selectedGame}  />} />
+        <Route path="/add-game" element={<AddGame onAddGame={addGame} />} />
       </Routes>
     </BrowserRouter>
   );
