@@ -34,6 +34,22 @@
   margin-bottom: 10px; /* Ajusta el espacio entre los párrafos solo en GameDetails */
 }
 
+.editButton {
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px; /* Más espacio entre el formulario y el botón */
+  transition: background-color 0.3s; /* Animación en el cambio de color */
+}
+
+.editButton:hover {
+  background-color: #535bf2; /* Cambio de color al pasar el ratón */
+}
+
 
 /* Estilo responsivo para dispositivos móviles */
 @media only screen and (max-width: 600px) {

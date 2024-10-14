@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import styles from "./GameDetails.module.css";
+import { Link } from "react-router-dom";
 
 const GameDetails = ({ games }) => {
   const { id } = useParams();
@@ -23,6 +24,10 @@ const GameDetails = ({ games }) => {
       <p>Descripción: {game.description}</p>
       <p>Jugadores: {game.players}</p>
       <p>Categorías: {game.categories}</p>
+
+      <Link to={`/edit-game/${game.id}`}>
+      <button className={styles.editButton}>Editar deporte</button>
+    </Link>
     </div>
   );
 };

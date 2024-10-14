@@ -10,6 +10,7 @@ const Home = ({ games, deleteGameById }) => {
       <Link to="/add-game">
         <button className={styles.addButton}>Agregar juego</button>
       </Link>
+      
       <GamesList games={games} deleteGameById={deleteGameById} />
     </div>
   );

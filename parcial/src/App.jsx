@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import GameDetails from "./components/GameDetails/GameDetails";
 import AddGame from "./components/AddGame/AddGame";
-
+import EditGame from "./components/Editgame/EditGame";
 const App = () => {
   const [games, setGames] = useState([]);
   const [selectedGame, setSelectedGame] = useState(null);
@@ -68,6 +68,26 @@ const App = () => {
     }
   };
 
+  // PUT (update) a game by ID
+  const updateGameById = async (id, updatedGame) => {
+    try {
+      const response = await fetch(`http://localhost:3000/api/games/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedGame),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setGames(data); // Actualiza la lista de juegos con la respuesta
+      } else {
+        console.error('Error updating game');
+      }
+    } catch (error) {
+      console.error("Error updating game:", error);
+    }
+  };
 
   return (
     <BrowserRouter>
@@ -75,6 +95,7 @@ const App = () => {
         <Route path="/" element={<Home games={games} deleteGameById={deleteGameById} />} />
         <Route path="/game/:id" element={<GameDetails games={games} fetchGameById={fetchGameById} selectedGame={selectedGame}  />} />
         <Route path="/add-game" element={<AddGame onAddGame={addGame} />} />
+        <Route path="/edit-game/:gameId" element={<EditGame games={games} onUpdateGame={updateGameById} />} />
       </Routes>
     </BrowserRouter>
   );
