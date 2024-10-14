@@ -12,6 +12,21 @@
     margin-bottom: 15px; /* Espacio entre el título y el formulario */
     
   }
+  .backButton {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #646cff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Más espacio entre el botón y el título */
+    transition: background-color 0.3s; /* Animación en el cambio de color */
+  }
+  
+  .backButton:hover {
+    background-color: #535bf2; /* Cambio de color al pasar el ratón */
+  }
   
   .formGroup {
     margin-bottom: 15px; /* Espacio entre los campos del formulario */
@@ -36,7 +51,7 @@
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #646cff;
+    background-color: blue;
     color: white;
     border: none;
     border-radius: 5px;

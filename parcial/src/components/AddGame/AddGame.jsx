@@ -19,6 +19,9 @@ const AddGame = ({ onAddGame }) => {
 
   return (
     <div className={styles.addGameContainer}>
+      <button className={styles.backButton} onClick={() => navigate("/")}>
+        Atrás
+      </button>
       <h2>Agregar nuevo juego</h2>
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
